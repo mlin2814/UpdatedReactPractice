@@ -1,87 +1,25 @@
 'use strict';
 
-console.log('App.js is running');
-
-var templateObject = {
-	title: 'Greetings',
-	subtitle: 'Meatbag',
-	options: ['One', 'Two']
+var square = function square(x) {
+	return x * x;
 };
 
-var template = React.createElement(
-	'div',
-	null,
-	React.createElement(
-		'h1',
-		null,
-		templateObject.title
-	),
-	templateObject.subtitle && React.createElement(
-		'p',
-		null,
-		templateObject.subtitle
-	),
-	React.createElement(
-		'p',
-		null,
-		templateObject.options.length > 0 ? "Here are your options" : "No options"
-	),
-	React.createElement(
-		'ol',
-		null,
-		React.createElement(
-			'li',
-			null,
-			'Item 1'
-		),
-		React.createElement(
-			'li',
-			null,
-			'Item 2'
-		)
-	)
-);
+// const squareArrow = (x) => {
+// 	return x * x;
+// };
 
-// {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-
-var user = {
-	name: 'Matt',
-	age: 24,
-	location: 'NYC'
+var squareArrow = function squareArrow(x) {
+	return x * x;
 };
 
-function getLocation(location) {
-	if (location) {
-		return React.createElement(
-			'p',
-			null,
-			'Location: ',
-			location
-		);
-	}
-}
+console.log(squareArrow(4));
 
-// var userName = 'Vincent';
-// var userAge = 29;
-// var userLocation = 'New York';
+// const getFirstName = (fullName) => {
+// 	return fullName.split(' ')[0];
+// }
 
-var template2 = React.createElement(
-	'div',
-	null,
-	React.createElement(
-		'h1',
-		null,
-		user.name ? user.name : 'Anon'
-	),
-	user.age && user.age >= 18 && React.createElement(
-		'p',
-		null,
-		'Age: ',
-		user.age
-	),
-	getLocation(user.location)
-);
+var getFirstName = function getFirstName(fullName) {
+	return fullName.split(' ')[0];
+};
 
-var appRoot = document.getElementById('app');
-
-ReactDOM.render(template, appRoot);
+console.log(getFirstName('James Doe'));
