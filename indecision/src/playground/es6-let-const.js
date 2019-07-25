@@ -20,5 +20,7 @@ var fullName = 'Marcus Lutrell';
 if (fullName) {
 	const firstName = fullName.split(' ')[0];
 	console.log(firstName);
-} 
+}
 // else {}
+
+// Let and const are block level scoped, so you cannot reassign the value if it is within that scope

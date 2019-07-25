@@ -1,52 +1,143 @@
 console.log("App is running");
 
-var app = {
+const app = {
   title: 'Indecision App',
   subtitle: 'Run away as fast you can...',
-  options: ['One', 'Two']
+  options: []
 };
 
-var template = (
-  <div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+const onFormSubmit = (e) => {
+  e.preventDefault();
 
-    <ol>
-      <li>Item one</li>
-      <li>Item two</li>
-    </ol>
-  </div>
-);
+  const option = e.target.elements.option.value;
 
-var user = {
-	name: 'Matt',
-	age: 24,
-	location: 'New York'
-};
-
-function getLocation(location) {
-  if (location) {
-    return <p>Location: {location}</p>;
-  } else {
-    return undefined;
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
   }
+  renderFormApp();
 }
 
-var template2 = (
-  <div>
-    <h1>{user.name ? user.name : 'Anon'}</h1>
-    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-    {getLocation(user.location)}
+const resetOptions = () => {
+  app.options = [];
+  renderFormApp();
+};
 
-  </div>
-)
+const onMakeDecision = () => {
+  const randNum = Math.floor(Math.random() * app.options.length);
+  const option = app.options[randNum];
+  alert(option);
+  console.log(randNum);
+};
+
+const appRoot = document.getElementById('app');
 
 
-var appRoot = document.getElementById('app');
+const renderFormApp = () => {
+  const template = (
+    <div>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+      <button disabled={app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
+      <button onClick={resetOptions}>Remove All Options</button>
+      <ol>
+        {
+          app.options.map((option) => {
+            return <li key={option}>Option: {option}</li>;
+          })
+        }
+        {/* <li>Item one</li>
+        <li>Item two</li> */}
+      </ol>
+
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option"></input>
+        <button>Add Option</button>
+      </form>
+    </div>
+  );
+  ReactDOM.render(template,appRoot);
+}
 
 
-ReactDOM.render(template, appRoot);
+
+renderFormApp();
+
+
+
+// *****No longer using for further lessons
+// const user = {
+// 	name: 'Matt',
+// 	age: 24,
+// 	location: 'New York'
+// };
+//
+// function getLocation(location) {
+//   if (location) {
+//     return <p>Location: {location}</p>;
+//   } else {
+//     return undefined;
+//   }
+// }
+//
+// const template2 = (
+//   <div>
+//     <h1>{user.name ? user.name : 'Anon'}</h1>
+//     {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+//     {getLocation(user.location)}
+//
+//   </div>
+// )
+
+// *****Still using var, but the above will be a mix of let and const
+// var app = {
+//   title: 'Indecision App',
+//   subtitle: 'Run away as fast you can...',
+//   options: ['One', 'Two']
+// };
+//
+// var template = (
+//   <div>
+//     <h1>{app.title}</h1>
+//     {app.subtitle && <p>{app.subtitle}</p>}
+//     <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+//
+//     <ol>
+//       <li>Item one</li>
+//       <li>Item two</li>
+//     </ol>
+//   </div>
+// );
+//
+// var user = {
+// 	name: 'Matt',
+// 	age: 24,
+// 	location: 'New York'
+// };
+//
+// function getLocation(location) {
+//   if (location) {
+//     return <p>Location: {location}</p>;
+//   } else {
+//     return undefined;
+//   }
+// }
+//
+// var template2 = (
+//   <div>
+//     <h1>{user.name ? user.name : 'Anon'}</h1>
+//     {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+//     {getLocation(user.location)}
+//
+//   </div>
+// )
+//
+//
+// var appRoot = document.getElementById('app');
+//
+//
+// ReactDOM.render(template, appRoot);
 
 // ******Here we have an example of using tenerary operator, and && operator, and rendering to the DOM if an element exists
 // var app = {
