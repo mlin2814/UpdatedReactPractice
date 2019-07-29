@@ -5,7 +5,7 @@ class Counter extends React.Component {
     this.handleMinusOne = this.handleMinusOne.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.state = {
-      count: 0
+      count: props.count
     }
   }
   handleAddOne(){
@@ -24,7 +24,24 @@ class Counter extends React.Component {
     });
   }
   handleReset(){
-    console.log('handleReset');
+    this.setState(() => {
+      return {
+        count: 0
+      };
+    });
+    // ****This is the asynchronous method and correct, so use this combination
+    // this.setState(() => {
+    //   return {
+    //     count: 0
+    //   };
+    // });
+    // this.setState((prevState) => {
+    //   return {
+    //     count: prevState.count + 1
+    //   };
+    // });
+    // ****************************************
+    // console.log('handleReset');
     // alert('Reset Count');
   }
 
@@ -38,6 +55,10 @@ class Counter extends React.Component {
       </div>
     );
   }
+}
+
+Counter.defaultProps = {
+  count: 0
 }
 
 ReactDOM.render(<Counter/>, document.getElementById('app'));
