@@ -8,4 +8,12 @@ console.log('utils.js is running');
 const square = (x) => x * x;
 const add = (a, b) => a + b;
 
-export { add, square };
+const subtract = (a, b) => a - b;
+
+export { add, square, subtract as default };
+
+// When dealing with defaults, the format for exports can be done like this
+export default subtract;
+// OR!
+export default (a, b) => a - b;
+// wild
