@@ -1,0 +1,19 @@
+.header {
+  background: $dark-blue;
+  margin-bottom: $xl-size;
+  padding: $m-size 0;
+  color: #EAAC4C;
+}
+
+// Block Element Modifier
+.header__title {
+  font-size: $l-size;
+  margin: 0;
+}
+
+.header__subtitle {
+  color: $light-purple;
+  font-size: $m-size;
+  font-weight: 500;
+  margin: 0
+}
