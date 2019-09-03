@@ -1,28 +1,27 @@
+'use strict';
+
 // ***********Part 2 of Arrow functions
 
 //****So below, we have examples of what is lost when using arrow functions: the arguments object, and the 'this' keyword
-const user = {
+var user = {
 	name: 'Mike',
 	cities: ['New York', 'Boston', 'Gotham'],
-	printPlacesLived: function() {
+	printPlacesLived: function printPlacesLived() {
 		console.log(this.cities);
 
-		this.cities.forEach(function(city) {
+		this.cities.forEach(function (city) {
 			console.log(this.name + ' has lived in ' + city);
-		})
+		});
 	}
 };
 user.printPlacesLived();
 
-
-const add = (a, b) => {
+var add = function add(a, b) {
 	// console.log(arguments);
 	return a + b;
-}
+};
 
-console.log(add(55,1));
-
-
+console.log(add(55, 1));
 
 // ***********Part 1 of Arrow functions
 // ****Challenge code
