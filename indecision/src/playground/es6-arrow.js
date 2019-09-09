@@ -1,18 +1,45 @@
 // ***********Part 2 of Arrow functions
 
+// ****Challenge code
+const multiplier = {
+	numbers: [4, 5, 6],
+	multiplier: 3,
+	multiply(){
+		return this.numbers.map((number) => number * this.multiplier ) ;
+	}
+}
+
+console.log(multiplier.multiply());
+
 //****So below, we have examples of what is lost when using arrow functions: the arguments object, and the 'this' keyword
 const user = {
 	name: 'Mike',
 	cities: ['New York', 'Boston', 'Gotham'],
-	printPlacesLived: function() {
-		console.log(this.cities);
+	printPlacesLived() {
+		// const cityMessages =
+		return this.cities.map((city) => this.name + ' has lived in ' + city + '!');
+		// {
+			// return this.name + ' has lived in ' + city + '!';
+		// });
+		// return cityMessages;
+		// console.log(this.cities);
 
-		this.cities.forEach(function(city) {
-			console.log(this.name + ' has lived in ' + city);
-		})
+		// this.cities.forEach((city) => {
+		// 	console.log(this.name + ' has lived in ' + city);
+		// })
+
+	// printPlacesLived: function() {
+	// 	console.log(this.cities);
+	//
+	// 	this.cities.forEach((city) => {
+	// 		console.log(this.name + ' has lived in ' + city);
+	// 	})
+		// this.cities.forEach(function(city) {
+		// 	console.log(this.name + ' has lived in ' + city);
+		// })
 	}
 };
-user.printPlacesLived();
+console.log(user.printPlacesLived());
 
 
 const add = (a, b) => {
